@@ -1,0 +1,16 @@
+#!/usr/bin/perl -w
+
+use blib;
+use Games::WordGuess;
+
+$game = new Games::WordGuess;
+#$game = new Games::WordGuess("/usr/games/lib/fortunes/startrek");
+
+while($game->command_interface)
+{
+    print "Play again (Y/N)? ";
+    chomp($inp = <STDIN>);
+    last if ($inp =~ /N/i);
+    $game->init_mystery();
+}
+    

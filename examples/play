@@ -1,0 +1,74 @@
+#!/usr/bin/perl
+
+use Games::WordGuess;
+use CGI qw(:standard :html3);
+use CGI::Carp qw(fatalsToBrowser);
+use Apache::Session::DBI;
+use strict;
+use vars qw($DEBUG);
+
+my ($game, $id, $guess, $result);
+my %session;
+
+print header(-'pragma' => 'no-cache'),
+    start_html(-'title' => 'Main Tebak Kata');
+
+if ($id = substr(path_info(), 1))
+{
+    eval {
+        tie %session, 'Apache::Session::DBI', $id,
+        {DataSource => 'dbi:mysql:sessions', UserName => 'root'};
+    };
+    if ($@) {
+        die "Session is inaccessible: $@";
+    }
+
+    $game = $session{'game'};
+    print STDERR "Game after fetch id: $game" if ($DEBUG);
+    if (param('term'))
+    {
+        print h1("Game terminated by player"),
+            h2("Chances : ", $game->get_chances),
+            h2("Score : ", $game->get_score), hr,
+            end_html;
+            tied(%session)->delete;
+            exit(0);
+    }
+    $result = $game->process_guess(param('guess'));
+    if (defined($result) && $result)
+    {
+        print h1("Gotcha!"), hr;
+        $game->init_mystery();
+    }
+    elsif ($game->get_chances == 0)
+    {
+        print h1("You lose!"), 
+            h2("Chances : ", $game->get_chances),
+            h2("Score : ", $game->get_score), hr,
+            end_html;
+        tied(%session)->delete;
+        exit(0);
+    }
+}
+else
+{
+    tie %session, 'Apache::Session::DBI', undef, 
+        {DataSource => 'dbi:mysql:sessions', UserName => 'root'};
+    $game = new Games::WordGuess;
+    $id = $session{'_session_id'};
+    print STDERR "Game before fetch id: $game" if ($DEBUG);
+}
+
+print h1($game->in_progress), hr,
+    h2("Chances : ", $game->get_chances),
+    h2("Score : ", $game->get_score), hr;
+
+$session{'game'} = $game;
+print h2("Your guess ?"), p;
+
+my $sn = script_name();
+print map { "<a href=$sn/$id?guess=$_" .
+    "> [$_] </a>\n" } ('A'..'Z');
+
+print hr, a({-'href' => "$sn/$id?term=yes"}, "QUIT");
+print end_html;
