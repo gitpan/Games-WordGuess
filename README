@@ -1,0 +1,26 @@
+NAME
+    Games::WordGuess - a class for creating word-guessing game
+
+SYNOPSIS
+      use Games::WordGuess;
+
+DESCRIPTION
+    Games::WordGuess is a module for word-guessing game. Scoring is
+    calculated from the number of chances left for each mystery
+    word.
+
+HISTORY
+    * July 1999 - Version 0.11:
+      Changes to command_interface(), as suggested by Steven
+      Haryanto <sh@hhh.indoglobal.com>.
+
+    * April 1999 - Publicly released, Version 0.10
+AUTHOR
+    Edwin Pratomo <ed.pratomo@computer.org>
+
+COPYRIGHT
+    Copyright (c) 1999 Edwin Pratomo <ed.pratomo@computer.org>.
+
+    All rights reserved. This is a free code; you can redistribute
+    it and/or modify it under the same terms as Perl itself.
+

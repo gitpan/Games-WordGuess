@@ -1,0 +1,22 @@
+#!/usr/bin/perl -w
+
+use blib;
+use Games::WordGuess;
+
+
+$SIG{'ALRM'} = sub
+{
+	print "Time is up!\n";
+	$game->show_answer();
+	exit(0);
+};
+
+$game = new Games::WordGuess;
+while($game->command_interface)
+{
+	print "Play again (Y/N)? ";
+	chomp($inp = <STDIN>);
+	last if ($inp =~ /N/i);
+	$game->init_mystery();
+}
+	
