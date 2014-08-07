@@ -29,6 +29,8 @@
       },
       "runtime" : {
          "requires" : {
+            "Games::Word::Wordlist::KBBI" : "0",
+            "Games::Word::Wordlist::SGB" : "0",
             "Module::List" : "0",
             "experimental" : "0",
             "perl" : "5.010001"
@@ -55,7 +57,7 @@
          "web" : "https://github.com/sharyanto/perl-Games-WordGuess"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018001"

@@ -1,7 +1,7 @@
 package Games::WordGuess;
 
 our $DATE = '2014-08-07'; # DATE
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 use 5.010001;
 use strict;
@@ -57,7 +57,7 @@ sub run {
     $self->{score} = 0;
 
     for my $i (1..$self->{num_words}) {
-        print "\nWord $i:\n";
+        print "\nWord $i/$self->{num_words}:\n";
         my ($is_correct, $score) = $self->ask_word;
         $self->{num_correct}++ if $is_correct;
         $self->{score} += $score;
@@ -172,7 +172,7 @@ Games::WordGuess - Word guess game
 
 =head1 VERSION
 
-This document describes version 0.01 of Games::WordGuess (from Perl distribution Games-WordGuess), released on 2014-08-07.
+This document describes version 0.02 of Games::WordGuess (from Perl distribution Games-WordGuess), released on 2014-08-07.
 
 =head1 SYNOPSIS
 

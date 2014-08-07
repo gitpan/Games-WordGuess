@@ -23,6 +23,8 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Games::WordGuess",
   "PREREQ_PM" => {
+    "Games::Word::Wordlist::KBBI" => 0,
+    "Games::Word::Wordlist::SGB" => 0,
     "Module::List" => 0,
     "experimental" => 0
   },
@@ -32,7 +34,7 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.01",
+  "VERSION" => "0.02",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -41,6 +43,8 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "File::Spec" => 0,
+  "Games::Word::Wordlist::KBBI" => 0,
+  "Games::Word::Wordlist::SGB" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
   "Module::List" => 0,
