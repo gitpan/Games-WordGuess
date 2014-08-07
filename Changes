@@ -1,5 +1,5 @@
-Revision history for Perl extension Games::WordGuess.
+Revision history for Games-WordGuess
 
-0.01  Sun Apr 18 12:41:52 1999
-	- original version; created by h2xs 1.18
+0.01    2014-08-07 (SHARYANTO)
 
+        - First release.

@@ -1,79 +1,37 @@
 NAME
-    Games::WordGuess - a class for creating word-guessing game
+    Games::WordGuess - Word guess game
+
+VERSION
+    This document describes version 0.01 of Games::WordGuess (from Perl
+    distribution Games-WordGuess), released on 2014-08-07.
 
 SYNOPSIS
-      use Games::WordGuess;
+     % wordguess
 
-      $game = new Games::WordGuess;
-      $game = new Games::WordGuess("/usr/games/lib/fortunes/startrek");  
+SEE ALSO
+    wordguess
 
-DESCRIPTION
-    Games::WordGuess is a module for word-guessing game. Scoring is
-    calculated from the number of chances left for each mystery
-    word.
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/Games-WordGuess>.
 
-  Constructor
+SOURCE
+    Source repository is at
+    <https://github.com/sharyanto/perl-Games-WordGuess>.
 
-    Specify the full path to the file containing words to be played
-    at the `new()' method, for example:
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    <https://rt.cpan.org/Public/Dist/Display.html?Name=Games-WordGuess>
 
-      $game = new Games::WordGuess("/usr/games/lib/fortunes/startrek");  
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
 
-    otherwise, `Games::WordGuess' uses some internal Indonesian
-    words as the default.
-
-  Simple command line user interface
-
-    Look at examples/cmdln script on example of using
-    `command_interface()'.
-
-  process_guess()
-
-    This is the core method. Passed a character, `process_guess'
-    will return undef if there's no matched character in the current
-    mystery word. If it is passed a previous matched character, it
-    returns undef as well. On success, it returns 0, or 1 if the
-    mystery word has already revealed.
-
-  in_progress()
-
-    Returns the mystery word in current player's progress.
-    Initially, after a `Game::WordGuess' object is created, this
-    will return the mystery word covered with asterisks. On each
-    matched guess, the corresponding asterisk will be substituted by
-    the real character.
-
-  get_chances()
-
-    Returns the remaining chances left for current player.
-
-  get_score()
-
-    Returns total score for current player.
-
-  init_mystery()
-
-    Provides a new mystery word to current player. Call to this
-    method is required to continue the game after successful guess
-    of one complete word.
-
-HISTORY
-    * August 16, 1999 - Version 0.20:
-      process_guess() now returns undef on missed guess. Added
-      in_progress() method. Added documentation, and a CGI script
-      example using Apache::Session.
-
-    * July 1999 - Version 0.11:
-      Changes to command_interface(), as suggested by Steven
-      Haryanto <sh@hhh.indoglobal.com>.
-
-    * April 1999 - Publicly released, Version 0.10
 AUTHOR
-    Edwin Pratomo <ed.pratomo@computer.org>
+    Steven Haryanto <stevenharyanto@gmail.com>
 
-COPYRIGHT
-    Copyright (c) 1999 Edwin Pratomo <ed.pratomo@computer.org>.
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2014 by Steven Haryanto.
 
-    All rights reserved. This is a free code; you can redistribute
-    it and/or modify it under the same terms as Perl itself.
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
