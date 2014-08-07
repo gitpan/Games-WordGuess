@@ -1,7 +1,7 @@
 package Games::WordGuess;
 
 our $DATE = '2014-08-07'; # DATE
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 use 5.010001;
 use strict;
@@ -24,6 +24,9 @@ sub new {
         if (($ENV{LANG} // "") =~ /^id/ && "KBBI" ~~ @wls) {
             $wl = "KBBI";
         } else {
+            if (@wls > 1) {
+                @wls = grep {$_ ne 'KBBI'} @wls;
+            }
             $wl = $wls[rand @wls];
         }
     }
@@ -172,7 +175,7 @@ Games::WordGuess - Word guess game
 
 =head1 VERSION
 
-This document describes version 0.03 of Games::WordGuess (from Perl distribution Games-WordGuess), released on 2014-08-07.
+This document describes version 0.04 of Games::WordGuess (from Perl distribution Games-WordGuess), released on 2014-08-07.
 
 =head1 SYNOPSIS
 

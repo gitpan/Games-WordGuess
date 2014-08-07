@@ -1,5 +1,11 @@
 Revision history for Games-WordGuess
 
+0.04    2014-08-07 (SHARYANTO)
+
+        - Minor tweak (don't pick Indonesian KBBI wordlist unless locale is
+          Indonesian).
+
+
 0.03    2014-08-07 (SHARYANTO)
 
         - Minor fixes.
