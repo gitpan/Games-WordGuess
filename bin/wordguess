@@ -1,17 +1,17 @@
 #!perl
 
 our $DATE = '2014-08-07'; # DATE
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 use Games::WordGuess;
 use Getopt::Long qw(:config bundling auto_version auto_help);
 
 my %opts = (
-    min_len => 5,
-    max_len => 5,
+    min_len => undef,
+    max_len => undef,
     max_guesses => undef,
     word_list => undef,
-    num_words => 10,
+    num_words => undef,
 );
 GetOptions(
     'min-len|a=i'     => \$opts{min_len},
@@ -39,7 +39,7 @@ wordguess - Word guess game
 
 =head1 VERSION
 
-This document describes version 0.02 of wordguess (from Perl distribution Games-WordGuess), released on 2014-08-07.
+This document describes version 0.03 of wordguess (from Perl distribution Games-WordGuess), released on 2014-08-07.
 
 =head1 SYNOPSIS
 
@@ -53,12 +53,14 @@ Customize some options (wordlist is Games::Word::Wordlist::* module):
 
 Other options:
 
- % arrange-number --help
- % arrange-number --version
+ % wordguess --help
+ % wordguess --version
 
 An example game session:
 
- Word 1:
+ % wordguess -w3
+
+ Word 1/3:
  o  _  _  _  _  Your guess (1/5)? ovale
  o  _  _  _  _  Sorry, not a word! Your guess (1/5)? odors
  o  _  _  r  _  Your guess (2/5)? overt
@@ -72,15 +74,15 @@ An example game session:
  o  _  e  r  _  Your last guess? overt
  o  _  e  r  _  Chances used up. The correct word is: opera
 
- Word 2:
+ Word 2/3:
  g  _  _  _  _  Your guess (1/5)? grand
  g  r  _  _  _  Your guess (2/5)? greet
  g  r  _  _  _  Your guess (3/5)? groom
  g  r  _  _  _  Your guess (4/5)? grips
  g  r  _  _  s  Your last guess? grubs
- Correct!
+ Correct (20 points)!
 
- Word 4:
+ Word 3/3:
  d  _  _  _  _  Your guess (1/5)? drives
  d  _  _  _  _  Sorry, not a 5-letter word! Your guess (1/5)? drive
  d  _  _  _  e* Your guess (2/5)? deers
@@ -90,6 +92,9 @@ An example game session:
  d  _  e* _  _  Your guess (4/5)? dared
  d  _  _  e  _  Your last guess? dunes
  d  _  _  e  s  Chances used up. The correct word is: dotes
+
+ Number of words guessed correctly: 1/3
+ Final score: 20
 
 =head1 DESCRIPTION
 
@@ -138,9 +143,17 @@ Number of words per game.
 
 =over
 
+=item * Switch to another English wordlist
+
+One that, unlike SGB, also contains popular words that have lengths other than 5
+letters. Because using wordlist that only contains 5-letter words can lead to a
+rather confusing error message ("Sorry, not a word"):
+
 =item * Write statistics file
 
 =item * Colors
+
+=item * Add timeout for each guess
 
 =back
 

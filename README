@@ -2,7 +2,7 @@ NAME
     Games::WordGuess - Word guess game
 
 VERSION
-    This document describes version 0.02 of Games::WordGuess (from Perl
+    This document describes version 0.03 of Games::WordGuess (from Perl
     distribution Games-WordGuess), released on 2014-08-07.
 
 SYNOPSIS
